@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+@import "leaflet/dist/leaflet.css";
+
+@font-face {
+  font-family: "PlayStationSST";
+  src: url("/fonts/SST-Roman.woff2") format("woff2"),
+       url("/fonts/SST-Roman.woff") format("woff");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "PlayStationSST", "Inter", sans-serif;
+  --font-display: "PlayStationSST", "Inter", sans-serif;
+  
+  --color-ps-blue: #003791;
+  --color-ps-cyan: #00f2ff;
+  --color-ps-purple: #bc13fe;
+  --color-ps-dark: #00011a;
+  
+  --color-ps-triangle: #00ac9f;
+  --color-ps-circle: #f05023;
+  --color-ps-cross: #5757f7;
+  --color-ps-square: #de3997;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+body {
+  background-color: var(--color-ps-dark);
+  color: white;
+  font-family: "PlayStationSST", "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.5);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.8);
+}
+
+.glass-panel {
+  background: rgba(0, 55, 145, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 242, 255, 0.15);
+}
+
+.leaflet-container {
+  background: #0b1220 !important;
+}
+
+.leaflet-tile-pane {
+  opacity: 1;
+  filter: none;
+}
+
+.neon-circle {
+  filter: drop-shadow(0 0 12px currentColor);
+  stroke-width: 3px;
+}
+
+.neon-boundary-national {
+  filter: drop-shadow(0 0 6px #ffffff) drop-shadow(0 0 14px rgba(255, 255, 255, 0.9));
+}
+
+.neon-boundary-muni {
+  filter: drop-shadow(0 0 4px #2f7dff);
+  opacity: 1;
+}
+
+.ps-popup .leaflet-popup-content-wrapper {
+  background: rgba(0, 5, 26, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+}
+
+.ps-popup .leaflet-popup-tip {
+  background: rgba(0, 5, 26, 0.95);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+.ps-symbol {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.map-label-white {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+.map-label-white::before {
+  display: none;
+}
+
+.hotspot-indicator {
+  animation: hotspotPulse 2s ease-in-out infinite;
+}
+
+@keyframes hotspotPulse {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
+.hotspot-quake-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: quakeWave 1.2s ease-out infinite;
+}
+
+.hotspot-quake-ring-1 { animation-delay: 0s; }
+.hotspot-quake-ring-2 { animation-delay: 0.2s; }
+.hotspot-quake-ring-3 { animation-delay: 0.4s; }
+
+.hotspot-quake-core {
+  animation: quakeCore 0.8s ease-in-out infinite;
+}
+
+.map-quake {
+  animation: mapShake 0.55s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes quakeWave {
+  0% {
+    transform: scale(0.82);
+    stroke-opacity: 0.9;
+    fill-opacity: 0.22;
+  }
+  70% {
+    stroke-opacity: 0.25;
+    fill-opacity: 0.05;
+  }
+  100% {
+    transform: scale(1.22);
+    stroke-opacity: 0;
+    fill-opacity: 0;
+  }
+}
+
+@keyframes quakeCore {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+@keyframes mapShake {
+  0% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-1.5px, 1px) rotate(-0.2deg); }
+  40% { transform: translate(1.5px, -1px) rotate(0.2deg); }
+  60% { transform: translate(-1px, 1px) rotate(0); }
+  80% { transform: translate(1px, -1px) rotate(0.15deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+.scanline-effect {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 242, 255, 0.12) 46%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(0, 242, 255, 0.12) 54%,
+    transparent 100%
+  );
+  background-size: 100% 220%;
+  animation: scanlineMove 2.2s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% { background-position: 0 -140%; }
+  100% { background-position: 0 140%; }
+}
+
+.ps-bg-symbols {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.ps-bg-symbol {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: "PlayStationSST", "Inter", sans-serif;
+  font-size: var(--size);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0;
+  mix-blend-mode: screen;
+  text-shadow: 0 0 14px currentColor, 0 0 30px currentColor;
+  transform: translate(var(--sx), var(--sy));
+  animation: psSymbolShoot var(--dur) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.ps-symbol-square { color: #de3997; }
+.ps-symbol-cross { color: #5757f7; }
+.ps-symbol-circle { color: #f05023; }
+.ps-symbol-triangle { color: #00ac9f; }
+
+@keyframes psSymbolShoot {
+  0% {
+    transform: translate(var(--sx), var(--sy)) scale(0.7) rotate(-8deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.62;
+  }
+  72% {
+    opacity: 0.48;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1.05) rotate(10deg);
+    opacity: 0;
+  }
+}
