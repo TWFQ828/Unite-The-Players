@@ -218,7 +218,7 @@ const HeatmapSection = () => {
             </div>
           </div>
           
-          <div className={`lg:w-2/3 relative w-full h-[420px] md:h-[620px] rounded-[28px] md:rounded-[36px] overflow-hidden border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.55)] bg-[#02163d] ${isQuaking ? 'map-quake' : ''}`}>
+          <div className={`lg:w-2/3 relative w-full h-[300px] sm:h-[420px] md:h-[620px] rounded-[28px] md:rounded-[36px] overflow-hidden border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.55)] bg-[#02163d] ${isQuaking ? 'map-quake' : ''}`}>
             <MapContainer
               center={[52.1326, 5.2913]}
               zoom={7}
@@ -473,7 +473,7 @@ const CharacterCard = ({ character }: { character: any, key?: any }) => {
   return (
     <motion.div 
       whileHover={{ y: -10 }}
-      className="relative group h-[600px] rounded-3xl overflow-hidden glass-panel border-ps-cyan/10 hover:border-ps-cyan/50 transition-all"
+      className="relative group h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] rounded-3xl overflow-hidden glass-panel border-ps-cyan/10 hover:border-ps-cyan/50 transition-all"
     >
       <div className="absolute inset-0">
         {character.glb ? (
@@ -489,14 +489,14 @@ const CharacterCard = ({ character }: { character: any, key?: any }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-ps-dark via-ps-dark/40 to-transparent pointer-events-none"></div>
       </div>
 
-      <div className="absolute bottom-0 p-8 w-full">
+      <div className="absolute bottom-0 p-4 sm:p-6 md:p-8 w-full">
         <div className="flex items-center gap-2 mb-2">
            {character.id === 'kratos' && <span className="text-ps-circle font-bold">○</span>}
            {character.id === 'ratchet' && <span className="text-ps-triangle font-bold">△</span>}
            {character.id === 'astro' && <span className="text-ps-cross font-bold">×</span>}
-           <span className="text-xs font-black tracking-widest uppercase" style={{ color: character.color }}>{character.title}</span>
+           <span className="text-xs sm:text-sm font-black tracking-widest uppercase" style={{ color: character.color }}>{character.title}</span>
         </div>
-              <h3 className="text-3xl font-black mb-2 italic font-display">{character.name}</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-2 italic font-display">{character.name}</h3>
         <p className="text-sm text-gray-300 mb-6">{character.description}</p>
         
         <div className="space-y-3">

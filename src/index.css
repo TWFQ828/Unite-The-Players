@@ -11,6 +11,17 @@
   font-display: swap;
 }
 
+@media (max-width: 640px) {
+  .map-label-white {
+    font-size: 7px !important;
+    letter-spacing: -0.01em !important;
+  }
+  
+  .leaflet-tooltip-pane {
+    transform: translateY(-4px) !important;
+  }
+}
+
 @theme {
   --font-sans: "PlayStationSST", "Inter", sans-serif;
   --font-display: "PlayStationSST", "Inter", sans-serif;
