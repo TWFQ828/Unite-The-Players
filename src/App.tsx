@@ -37,11 +37,11 @@ const Navbar = () => {
           <img 
             src="/Images/toppng.com-vector-free-download-playstation-it-is-a-playstation-playstation-logo-white-318x243.png" 
             alt="PS Logo" 
-            className="w-12 h-auto object-contain"
+            className="w-10 sm:w-12 h-auto object-contain"
             referrerPolicy="no-referrer"
           />
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tighter text-white leading-none font-display uppercase">PLAYSTATION</span>
+            <span className="text-lg sm:text-xl font-bold tracking-tighter text-white leading-none font-display uppercase">PLAYSTATION</span>
             <span className="text-[8px] text-ps-cyan font-black tracking-[0.4em] uppercase mt-1">Nederland</span>
           </div>
         </div>
@@ -99,11 +99,9 @@ const HeatmapSection = () => {
     { name: 'Eindhoven', lat: 51.4416, lng: 5.4697 },
     { name: 'Groningen', lat: 53.2194, lng: 6.5665 },
     { name: 'Tilburg', lat: 51.5555, lng: 5.0913 },
-    { name: 'Almere', lat: 52.3508, lng: 5.2647 },
     { name: 'Breda', lat: 51.5719, lng: 4.7683 },
     { name: 'Nijmegen', lat: 51.8126, lng: 5.8372 },
     { name: 'Enschede', lat: 52.2215, lng: 6.8937 },
-    { name: 'Haarlem', lat: 52.3874, lng: 4.6462 },
     { name: 'Arnhem', lat: 51.9851, lng: 5.8987 },
     { name: 'Zwolle', lat: 52.5168, lng: 6.0830 },
     { name: 'Maastricht', lat: 50.8514, lng: 5.6910 },
@@ -239,7 +237,7 @@ const HeatmapSection = () => {
                   radius={1.5}
                   pathOptions={{ color: '#ffffff', fillColor: '#ffffff', fillOpacity: 0.95, weight: 1 }}
                 >
-                  <Tooltip direction="top" permanent offset={[0, -2]} className="map-label-white">
+                  <Tooltip direction="top" permanent offset={[0, -0.5]} className="map-label-white">
                     {city.name}
                   </Tooltip>
                 </CircleMarker>
@@ -658,18 +656,18 @@ export default function App() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <section className="relative h-[80vh] sm:h-[85vh] md:h-screen flex items-center justify-center pt-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-b from-ps-dark/20 via-ps-dark/60 to-ps-dark"></div>
-             <img 
-               src="/Images/Gemini_Generated_Image_b4uagjb4uagjb4ua.png"
-               alt="Hero Background" 
-               className="w-full h-full object-cover opacity-40"
-               referrerPolicy="no-referrer"
-               onError={(event) => {
-                 event.currentTarget.src = 'https://picsum.photos/seed/ps-hero/1920/1080?blur=2';
-               }}
-             />
+            <img 
+              src="/Images/Gemini_Generated_Image_b4uagjb4uagjb4ua.png"
+              alt="Hero Background" 
+              className="w-full h-[120%] object-contain opacity-40"
+              referrerPolicy="no-referrer"
+              onError={(event) => {
+                event.currentTarget.src = 'https://picsum.photos/seed/ps-hero/1920/1080?blur=2';
+              }}
+            />
           </div>
 
           <div className="container mx-auto px-6 relative z-10 text-center">
